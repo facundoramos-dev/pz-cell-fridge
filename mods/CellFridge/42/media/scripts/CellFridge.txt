@@ -6,7 +6,7 @@ module Base
 		{
 			LuaWindowClass	= ISEntityWindow,
 			DisplayName		= Cell Fridge,
-			Icon			= Build_CrateWood,
+			Icon			= Item_Cooler,
 		}
 	}
 

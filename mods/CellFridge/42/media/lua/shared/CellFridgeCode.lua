@@ -23,6 +23,11 @@ CellFridgeCode = CellFridgeCode or {}
 -- whose parent is not a vehicle part and that is not inside an InventoryItem.
 local CELL_FRIDGE_MAX_CAPACITY = 100
 
+-- Spoilage multiplier for the fridge compartment. The ItemContainer
+-- constructor uses 0.02 for a fridge and 1.0 for everything else, so this
+-- matches what a vanilla fridge gets.
+local CELL_FRIDGE_AGE_FACTOR = 0.02
+
 -- Reads a sandbox option, falling back to a default when the mod's option
 -- namespace is missing (e.g. a client that has not received the options yet).
 local function getOption(name, default)
@@ -46,6 +51,27 @@ local function getCapacities()
            clampCapacity(getOption("FreezerCapacity", CELL_FRIDGE_MAX_CAPACITY), CELL_FRIDGE_MAX_CAPACITY)
 end
 
+-- Applied to a container so the game treats the compartment as a fridge.
+--
+-- ItemContainer.isFridge() is what the engine consults: it returns true when
+-- the container type is "fridge", and also when the parent object carries the
+-- IS_FRIDGE sprite property. The engine also derives the spoilage multiplier
+-- from it: the ItemContainer constructor sets ageFactor to 0.02 for a fridge
+-- and to 1.0 otherwise, and that factor is what slows down food going bad.
+--
+-- The constructor computes ageFactor only once, when the container is built,
+-- so changing the type afterwards does not recompute it. That is why the
+-- factor is set explicitly here: the fridge compartment keeps the 0.02
+-- preservation rate, and the freezer keeps the default 1.0 (frozen food does
+-- not spoil on its own).
+local function applyFridgeType(container, containerType, ageFactor)
+    if not container then return end
+    container:setType(containerType)
+    if ageFactor then
+        container:setAgeFactor(ageFactor)
+    end
+end
+
 -- Called from the entity's OnCreate hook, once per cell of the 2-cell build.
 -- params.thumpable is the IsoThumpable of the cell that was just created; by
 -- the time this runs, IsoObject.addToWorld() has already created the
@@ -59,6 +85,12 @@ function CellFridgeCode.onCreate(params)
     if not thumpable then return end
 
     local capacity, freezerCapacity = getCapacities()
+
+    -- The sprite already carries `container = fridge` and `Freezer`, so the
+    -- engine builds both compartments on its own. These calls make the
+    -- refrigeration explicit and independent of the tile properties.
+    applyFridgeType(thumpable:getContainer(), "fridge", CELL_FRIDGE_AGE_FACTOR)
+    applyFridgeType(thumpable:getContainerByType("freezer"), "freezer", nil)
 
     local container = thumpable:getContainer()
     if container then
@@ -99,6 +131,12 @@ function CellFridgeCode.refreshExistingFridges()
                             if container and container:getType() == "fridge" then
                                 if container:getCapacity() ~= capacity then
                                     container:setCapacity(capacity)
+                                    changed = true
+                                end
+                                -- Re-assert the refrigeration in case the
+                                -- container was created without the fridge type.
+                                if container:getAgeFactor() ~= CELL_FRIDGE_AGE_FACTOR then
+                                    applyFridgeType(container, "fridge", CELL_FRIDGE_AGE_FACTOR)
                                     changed = true
                                 end
                                 local freezer = object:getContainerByType("freezer")
