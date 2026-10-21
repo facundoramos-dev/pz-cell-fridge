@@ -4,9 +4,11 @@ A Project Zomboid (Build 42) mod that adds a craftable **Cell Fridge**: the two
 door glass display cooler you see in shops, with an **expandable capacity** set
 from the World Options.
 
-The mod reuses the vanilla `appliances_refrigeration_01` tiles, so it ships no
-textures at all. It is the Build 42 equivalent of the B41 mod *"Methyl's Furniture
-(Expanded capacity)"* (Workshop `2814253005`), whose Cell Fridge held 1000 items.
+The mod reuses the vanilla `appliances_refrigeration_01` tiles, so the object
+needs no new art. The only texture it ships is a 32x32 icon rendered from that
+same vanilla cooler art. It is the Build 42 equivalent of the B41 mod *"Methyl's
+Furniture (Expanded capacity)"* (Workshop `2814253005`), whose Cell Fridge held
+1000 items.
 
 - Workshop: <https://steamcommunity.com/sharedfiles/filedetails/?id=3823803784>
 - Mod id: `CellFridge` (the value that goes in a server `Mods=` list)
