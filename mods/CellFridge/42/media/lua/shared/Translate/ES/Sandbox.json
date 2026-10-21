@@ -1,0 +1,7 @@
+{
+  "Sandbox_CellFridge": "Heladera Cell",
+  "Sandbox_CellFridgeCapacity": "Capacidad de la heladera (kg)",
+  "Sandbox_CellFridgeCapacity_tooltip": "Cuánto peso puede guardar el compartimento de heladera de la Cell Fridge.<br>En B42 la capacidad de un contenedor se mide en kilos, y el motor limita a 100 kg un contenedor colocado en el mundo.<br>Se aplica al construir la heladera.",
+  "Sandbox_CellFridgeFreezerCapacity": "Capacidad del congelador (kg)",
+  "Sandbox_CellFridgeFreezerCapacity_tooltip": "Cuánto peso puede guardar el compartimento de congelador de la Cell Fridge.<br>En B42 la capacidad de un contenedor se mide en kilos, y el motor limita a 100 kg un contenedor colocado en el mundo.<br>Se aplica al construir la heladera."
+}

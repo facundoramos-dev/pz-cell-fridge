@@ -1,0 +1,7 @@
+name=Cell Fridge
+id=CellFridge
+author=facundoramos-dev
+description=Adds a craftable Cell Fridge: the two door glass display cooler seen in shops, with an expandable capacity configurable from the World Options. It reuses the vanilla appliances_refrigeration_01 tiles, so the mod ships no textures.
+version=1.0.0
+versionMin=42.0
+url=https://github.com/facundoramos-dev/pz-cell-fridge

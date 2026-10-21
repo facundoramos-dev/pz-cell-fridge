@@ -1,0 +1,81 @@
+module Base
+{
+	xuiSkin default
+	{
+		entity ES_CellFridge
+		{
+			LuaWindowClass	= ISEntityWindow,
+			DisplayName		= Cell Fridge,
+			Icon			= Build_CrateWood,
+		}
+	}
+
+	entity CellFridge
+	{
+		component UiConfig
+		{
+			xuiSkin			= default,
+			entityStyle		= ES_CellFridge,
+			uiEnabled		= false,
+		}
+
+		component SpriteConfig
+		{
+			health			= 400,
+			OnCreate		= CellFridgeCode.onCreate,
+
+			face S
+			{
+				layer
+				{
+					row = appliances_refrigeration_01_18 appliances_refrigeration_01_19,
+				}
+			}
+
+			face E
+			{
+				layer
+				{
+					row = appliances_refrigeration_01_17,
+					row = appliances_refrigeration_01_16,
+				}
+			}
+
+			face N
+			{
+				layer
+				{
+					row = appliances_refrigeration_01_46 appliances_refrigeration_01_47,
+				}
+			}
+
+			face W
+			{
+				layer
+				{
+					row = appliances_refrigeration_01_45,
+					row = appliances_refrigeration_01_44,
+				}
+			}
+		}
+
+		component CraftRecipe
+		{
+			timedAction		= BuildWallHammer,
+			time			= 50,
+			SkillRequired	= MetalWelding:3,
+			xpAward			= MetalWelding:30,
+			category		= Furniture,
+			Tags			= Welding;Furniture,
+			Tooltip			= Tooltip_craft_cellFridgeDesc,
+			inputs
+			{
+				item 1 tags[base:hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+				item 8 [Base.SheetMetal],
+				item 4 [Base.ElectricWire],
+				item 2 [Base.ElectronicsScrap],
+				item 4 [Base.Screws],
+			}
+		}
+	}
+}

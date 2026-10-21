@@ -1,0 +1,7 @@
+{
+  "Sandbox_CellFridge": "Cell Fridge",
+  "Sandbox_CellFridgeCapacity": "Fridge Capacity (kg)",
+  "Sandbox_CellFridgeCapacity_tooltip": "How much weight the fridge compartment of the Cell Fridge can hold.<br>B42 measures container capacity in kilograms, and the engine caps a placed container at 100 kg.<br>Applied when the fridge is built.",
+  "Sandbox_CellFridgeFreezerCapacity": "Freezer Capacity (kg)",
+  "Sandbox_CellFridgeFreezerCapacity_tooltip": "How much weight the freezer compartment of the Cell Fridge can hold.<br>B42 measures container capacity in kilograms, and the engine caps a placed container at 100 kg.<br>Applied when the fridge is built."
+}
