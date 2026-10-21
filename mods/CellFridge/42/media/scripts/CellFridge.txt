@@ -6,7 +6,7 @@ module Base
 		{
 			LuaWindowClass	= ISEntityWindow,
 			DisplayName		= Cell Fridge,
-			Icon			= Item_Cooler,
+			Icon			= Item_CellFridgeIcon,
 		}
 	}
 
@@ -23,6 +23,17 @@ module Base
 		{
 			health			= 400,
 			OnCreate		= CellFridgeCode.onCreate,
+
+			/*
+				The Large Store Fridge (the two door display cooler from the
+				shops) as it is placed in the world. These are the vanilla
+				tiles of the appliances_refrigeration_01 sheet, tiles
+				113016 to 113019 and 113044 to 113047:
+				    S: 18 + 19      E: 17 + 16
+				    N: 46 + 47      W: 45 + 44
+				Do not swap them for tiles 24 to 27, which are the one cell
+				"Mini" fridge and would break the two cell layout.
+			*/
 
 			face S
 			{
