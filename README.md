@@ -8,7 +8,7 @@ The mod reuses the vanilla `appliances_refrigeration_01` tiles, so it ships no
 textures at all. It is the Build 42 equivalent of the B41 mod *"Methyl's Furniture
 (Expanded capacity)"* (Workshop `2814253005`), whose Cell Fridge held 1000 items.
 
-- Workshop: <https://steamcommunity.com/sharedfiles/filedetails/?id=WORKSHOP_ID>
+- Workshop: <https://steamcommunity.com/sharedfiles/filedetails/?id=3823803784>
 - Mod id: `CellFridge` (the value that goes in a server `Mods=` list)
 - Requires Build 42 or newer. No other mods needed.
 
